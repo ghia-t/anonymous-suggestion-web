@@ -1,5 +1,5 @@
 # AAIS Anonymous Suggestion Web
-research
+for research purposes only.
 
 ## Overview
 
