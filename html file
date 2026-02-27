@@ -1,9 +1,134 @@
-<DOCTYPE!>
-  <html>
-    <title> AAIS Anonymous Suggestion Website </title>
-    <body> 
-    <h1> AAIS Freedom Wall </h1>
-      <p> Let your Voices be Heard. </p>
-     //practice code aaaa
-    </body>
-  </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAIS Anonymous Suggestion Website</title>
+    <link rel="icon" type="image/jpg" href="logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container header-content">
+                <div class="logo-area" onclick="showPage('home')">
+                    <img src="logo.jpg" alt="AAIS Logo" class="logo">
+                    <div class="logo-text">
+                        <h1>Army's Angels Integrated School</h1>
+                        <p>Feedback Portal</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <a href="#" onclick="showPage('home')">Submit Feedback</a>
+                    <a href="#" onclick="showPage('login')">Admin</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Home Page -->
+        <main id="home-page" class="page active">
+            <div class="container hero">
+                <h2>Speak Up. <span class="text-primary">Be Heard.</span></h2>
+                <p>We value your input in making Army's Angels Integrated School a better place for everyone.</p>
+            </div>
+
+            <div class="container">
+                <div class="form-card">
+                    <div class="card-header">
+                        <h3>Submit Feedback</h3>
+                        <p>Your identity is completely hidden. Help us improve our school better by sharing your honest thoughts, suggestions, and concerns.</p>
+                    </div>
+                    <form id="suggestion-form" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label>Choose what type of anonymous message</label>
+                            <select id="message-type" required>
+                                <option value="" disabled selected>Select a category</option>
+                                <option value="Request">Request</option>
+                                <option value="Concern">Concern</option>
+                                <option value="Suggestion">Suggestion</option>
+                                <option value="Feedback">Feedback</option>
+                                <option value="Confession">Confession</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Message</label>
+                            <textarea id="message-text" placeholder="Type your honest thoughts here..." required minlength="10"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit" id="submit-btn">Send Anonymously</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Login Page -->
+        <main id="login-page" class="page">
+            <div class="container flex-center">
+                <div class="login-card">
+                    <div class="login-icon">🔒</div>
+                    <h3>Admin Access</h3>
+                    <p>Restricted area for school administrators</p>
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="admin-password" placeholder="Enter admin password" required>
+                        </div>
+                        <button type="submit" class="btn-submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Admin Dashboard -->
+        <main id="admin-page" class="page">
+            <div class="container">
+                <div class="dashboard-header">
+                    <div>
+                        <h2>Dashboard</h2>
+                        <p>Manage incoming feedback and concerns</p>
+                    </div>
+                    <button class="btn-outline" onclick="logout()">Logout</button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-main">
+                        <div class="section-title">
+                            <span class="badge badge-pending" id="pending-count">0 Pending</span>
+                            <h3>Needs Review</h3>
+                        </div>
+                        <div id="pending-list" class="message-list"></div>
+                    </div>
+                    <div class="dashboard-sidebar">
+                        <div class="history-card">
+                            <h3>History</h3>
+                            <p>Recently processed items</p>
+                            <div id="history-list" class="history-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container footer-content">
+                <div class="footer-brand">
+                    <h3>Army's Angels Integrated School</h3>
+                    <p>Your voice matters. Make our school better.</p>
+                </div>
+                <div class="footer-credits">
+                    <p>© ICT 12-Thales 2026</p>
+                    <p class="tagline">Excellence through Feedback</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast">Message Sent!</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
